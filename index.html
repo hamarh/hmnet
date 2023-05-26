@@ -1,1 +1,450 @@
-<h1>HMNet</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Hierarchical Neural Memory Network for Low Latency Event Processing">
+  <meta name="keywords" content="HMNet, Event Cameras, Neuromorphic Vision Sensors">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hierarchical Neural Memory Network for Low Latency Event Processing</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <!--
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+  -->
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!--<link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <script defer src="./static/js/bulma-slider.min.js"></script>
+  <script defer src="./static/js/bulma-carousel.min.js"></script>
+  <script defer src="./static/js/slider.js"></script>
+  <!--
+  <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+  <script defer src="./static/js/slider.js"></script>
+  -->
+
+  <script src="./static/js/index.js"></script>
+
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" }},
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": { matchFontHeight: false },
+      displayAlign: "left",
+      displayIndent: "2em"
+    });
+  </script>
+
+</head>
+<body>
+
+<!--
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://hamarh.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hamarh/rare_event_detection.github.io">
+            Rare Event Detection
+          </a>
+          <a class="navbar-item" href="https://hamarh/hgconv.github.io">
+            HGConv
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+-->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Hierarchical Neural Memory Network for Low Latency Event Processing</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://rhama1104.github.io">Ryuhei Hamaguchi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.sfu.ca/~furukawa/">Yasutaka Furukawa</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="http://onishi-lab.jp/">Masaki Onishi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://kensakurada.github.io/">Ken Sakurada</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>National Institute of Advanced Industrial Science and Technology (AIST),</span>
+            <span class="author-block"><sup>2</sup>Simon Fraser University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Hamaguchi_Hierarchical_Neural_Memory_Network_for_Low_Latency_Event_Processing_CVPR_2023_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openaccess.thecvf.com/content/CVPR2023/supplemental/Hamaguchi_Hierarchical_Neural_Memory_CVPR_2023_supplemental.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hamarh/HMNet_pth"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/video_teaser.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <!--
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+              <video id="teaser" autoplay muted loop playsinline height="90%">
+                <source src="./static/videos/video_teaser_2_1.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+              <video id="teaser" autoplay muted loop playsinline height="90%">
+                <source src="./static/videos/video_teaser_2_2.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+              <video id="teaser" autoplay muted loop playsinline height="90%">
+                <source src="./static/videos/video_teaser_2_3.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+        -->
+
+
+        <!-- Start Carousel -->
+        <div id="slider" class="carousel">
+
+          <div class="video">
+            <figure class="image is-centered">
+              <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/video_teaser_2_2_margin.mp4" type="video/mp4">
+              </video>
+            </figure>
+          </div>
+
+          <div class="video">
+            <figure class="image is-centered">
+              <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/video_teaser_2_1_margin.mp4" type="video/mp4">
+              </video>
+            </figure>
+          </div>
+
+          <div class="video">
+            <figure class="image is-centered">
+              <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/video_teaser_2_3_margin.mp4" type="video/mp4">
+              </video>
+            </figure>
+          </div>
+
+        </div>
+        <!-- End Carousel -->
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper proposes a low latency neural network architecture for event-based dense prediction tasks.
+          </p>
+          <p>
+            Conventional architectures encode entire scene contents at a fixed rate regardless of their temporal characteristics.
+            Instead, the proposed network encodes contents at an adaptive rate depending on its movement speed.
+            We achieve this by constructing temporal hierarchy using stacked latent memories that operate at different rates.
+            Given low latency event steams, the multi-level memories gradually extract dynamic to static scene contents by propagating information from the fast to the slow memory modules.
+            The architecture not only reduces the redundancy of conventional architectures but also exploits long-term dependencies.
+            Furthermore, an attention-based event representation efficiently encodes sparse event streams into the memory cells.
+          </p>
+          <p>
+            We conduct extensive evaluations on three event-based dense prediction tasks, where the proposed approach outperforms the existing methods on accuracy and latency, while demonstrating effective event and image fusion capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/FY-lLmVnbCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Hierarchical Neural Memory Network</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our idea for low latency event processing is a multi-rate network architecture.
+            A scene often contains objects with varying motion speeds.
+            A network should run fast for high-speed motions, but conduct careful or global reasoning for slowly moving objects or scene context analysis.
+          </p>
+          <p>
+            To achieve this, the proposed network builds a temporal hierarchy using multi-level latent memories $\{\boldsymbol{z}_1,\boldsymbol{z}_2,\boldsymbol{z}_3\}$ that operate in parallel at different rates.
+          </p>
+        </div>
+
+        <div class="columns is-vcentered">
+        <figure>
+            <img src="./static/images/hmnet.svg" width="1080">
+        </figure>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            The memories are stacked such that their operating rate decreases from $\boldsymbol{z}_1$ to $\boldsymbol{z}_L$.
+            $\boldsymbol{z}_1$ writes incoming events into its state (event-write) and quickly extracts local and dynamic information with a shallow network ($F_u$).
+            The features are then propagated to higher memories ($F_{w}^{\uparrow}$) where global and static information is extracted with deeper networks ($F_u$).
+            The network also has a top-down path ($F_{w}^{\downarrow}$) that enables low-level memories to exploit the contextual information to recognize dynamic motion accurately.
+            At the end of the operating cycle, each memory computes output features ($F_{ro}$) and puts them into a latent buffer.
+            At every time step, the task head computes predictions from the features inside the latent buffer, exploiting low latency information and global context simultaneously.
+          </p>
+        </div>
+        <br/>
+
+        <!--
+        <div class="columns is-vcentered">
+        <figure>
+            <img src="./static/images/memory.svg" width="1080">
+        </figure>
+        </div>
+        <br/>
+        -->
+
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            The proposed HMNet outperforms existing methods while reducing latency by 40%-50%.
+          </p>
+        </div>
+
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/result_semseg.svg" alt="Results on Semantic-DSEC dataset."/>
+            <p>Results on Semantic Segmentation (DSEC-Semantic dataset)</p>
+          </div>
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/result_objdet.svg" alt="Results on GEN1 dataset."/>
+            <p class="is-bold">Results on Object Detection (GEN1 dataset)</p>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Datasets</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We appreciate the following works for releasing the event camera datasets used in our work:
+          </p>
+          <p>
+            <a href="https://dsec.ifi.uzh.ch/dsec-semantic/" target="_blank">DSEC-Semantic</a><br>
+            Z. Sun, N. Messikommer, D. Gehrig, and D. Scaramuzza. ESS: Learning Event-based Semantic Segmentation from Still Images. <i>ECCV</i>, 2022.<br>
+            M. Gehrig, W. Aarents, D. Gehrig, and D. Scaramuzza. DSEC: A Stereo Event Camera Dataset for Driving Scenarios. IEEE Robotics and Automation Letters, 2021.
+          </p>
+          <p>
+            <a href="https://www.prophesee.ai/2020/01/24/prophesee-gen1-automotive-detection-dataset/" target="_blank">GEN1</a><br>
+            Pierre de Tournemire, Davide Nitti, Etienne Perot, and Amos Sironi. A Large Scale Event-based Detection Dataset for Automotive. <i>CoRR</i>, 2020.
+          </p>
+          <p>
+            <a href="https://github.com/uzh-rpg/rpg_ramnet" target="_blank">EventScape</a><br>
+            D. Gehrig, M. Rüegg, M. Gehrig, J. Hidalgo-Carrio and D. Scaramuzza. Combining Events and Frames using Recurrent Asynchronous Multimodal Networks for Monocular Depth Prediction. IEEE Robotics and Automation Letters, 2021.
+          </p>
+          <p>
+            <a href="https://daniilidis-group.github.io/mvsec/" target="_blank">MVSEC</a><br>
+            A. Z. Zhu, D. Thakur, T. Ozaslan, B. Pfrommer, V. Kumar, and K. Daniilidis. The Multi Vehicle Stereo Event Camera Dataset: An Event Camera Dataset for 3D Perception. IEEE Robotics and Automation Letters, 2018.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Acknowledgement</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            This work is based on results obtained from a project commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{hamaguchi2023hmnet,
+  author    = {Ryuhei Hamaguchi, Yasutaka Furukawa, Masaki Onishi, Ken Sakurada},
+  title     = {Hierarchical Neural Memory Network for Low Latency Event Processing},
+  journal   = {CVPR},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!--
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This webpage is built with the template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
