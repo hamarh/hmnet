@@ -53,7 +53,8 @@
 
   <script src="./static/js/index.js"></script>
 
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </head>
 <body>
@@ -286,7 +287,7 @@
             A network should run fast for high-speed motions, but conduct careful or global reasoning for slowly moving objects or scene context analysis.
           </p>
           <p>
-            To achieve this, the proposed network builds a temporal hierarchy using multi-level latent memories \(\{\boldsymbol{z}_1,\boldsymbol{z}_2,\boldsymbol{z}_3\}\) that operate in parallel at different rates.
+            To achieve this, the proposed network builds a temporal hierarchy using multi-level latent memories $\{\boldsymbol{z}_1,\boldsymbol{z}_2,\boldsymbol{z}_3\}$ that operate in parallel at different rates.
           </p>
         </div>
 
@@ -298,11 +299,11 @@
 
         <div class="content has-text-justified">
           <p>
-            The memories are stacked such that their operating rate decreases from \(\boldsymbol{z}_1\) to \(\boldsymbol{z}_L\).
-            \(\boldsymbol{z}_1\) writes incoming events into its state (event-write) and quickly extracts local and dynamic information with a shallow network (\(F_u\)).
-            The features are then propagated to higher memories (\(F_{w}^{\uparrow}\)) where global and static information is extracted with deeper networks (\(F_u\)).
-            The network also has a top-down path (\(F_{w}^{\downarrow}\)) that enables low-level memories to exploit the contextual information to recognize dynamic motion accurately.
-            At the end of the operating cycle, each memory computes output features (\(F_{ro}\)) and puts them into a latent buffer.
+            The memories are stacked such that their operating rate decreases from $\boldsymbol{z}_1$ to $\boldsymbol{z}_L$.
+            $\boldsymbol{z}_1$ writes incoming events into its state (event-write) and quickly extracts local and dynamic information with a shallow network ($F_u$).
+            The features are then propagated to higher memories ($F_{w}^{\uparrow}$) where global and static information is extracted with deeper networks ($F_u$).
+            The network also has a top-down path ($F_{w}^{\downarrow}$) that enables low-level memories to exploit the contextual information to recognize dynamic motion accurately.
+            At the end of the operating cycle, each memory computes output features ($F_{ro}$) and puts them into a latent buffer.
             At every time step, the task head computes predictions from the features inside the latent buffer, exploiting low latency information and global context simultaneously.
           </p>
         </div>
